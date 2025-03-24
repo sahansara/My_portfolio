@@ -194,6 +194,17 @@ function App() {
               Read More
             </a>
           </div>
+
+          <div className="services-box">
+            <i class='bx bxl-medium'></i>
+            <h3>Blogging </h3>
+            <p> I write informative, engaging blogs to share my knowledge and experiences with others. As a passionate hobbyist writer, I create content on topics I'm knowledgeable about, helping readers learn new skills and perspectives. My blogs combine personal insights with practical information, making complex topics accessible to everyone. Through my writing, I aim to build a community of like-minded individuals interested in learning and growing together.</p>
+            <a href="https://medium.com/@widanevihaga" className="btn">
+              Read More
+            </a>
+          </div>
+
+
         </div>
       </section>
 

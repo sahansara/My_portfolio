@@ -56,7 +56,7 @@ section{
 }
 
 .navbar a {
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: var(--text-color);
   text-decoration: none;
   transition: color 0.3s ease;
@@ -69,7 +69,7 @@ section{
 }
 
 #menu-icon{
-  font-size: 3.6rem;
+  font-size: 3rem;
   color: var(--text-color);
   display: none;
 }
@@ -91,7 +91,7 @@ section{
 
 /* Main Image */
 .home-img img {
-  width: 35vw; /* Responsive size */
+  width: 30vw; /* Responsive size */
   height: auto;
   margin-left: 10vw; 
   object-fit: cover;
@@ -115,8 +115,8 @@ section{
   top: 50%;
   left: 60%;
   transform: translate(-50%, -50%) rotate(0);
-  width: 40vw;
-  height: 40vw;
+  width: 35vw;
+  height: 35vw;
   border-radius: 50%;
   border-top: 0.2rem solid var(--main-color);
   border-bottom: 0.2rem solid var(--main-color);
@@ -138,7 +138,7 @@ section{
 
 
 .home-content h3{
-  font-size: 4.2rem;
+  font-size: 3.2rem;
   font-weight: 750;
 } 
 .home-content h3:nth-of-type(2) {
@@ -148,12 +148,12 @@ span{
   color: var(--main-color);
 }
 .home-content h1{
-  font-size: 7.6rem;
+  font-size: 6.6rem;
   font-weight: 750;
   line-height: 1.6;
 }
 .home-content p{
-  font-size: 2.6rem;
+  font-size: 1.8rem;
 }
 .social-media a{
   display:inline-flex;
@@ -204,7 +204,7 @@ span{
 
 .heading{
   text-align: center;
-  font-size: 5.5rem;
+  font-size: 5.0rem;
 }
 .about-img img{
   width: 35vw;
@@ -215,10 +215,10 @@ span{
   font-size: 6rem;
 }
 .about-content h3{
-  font-size: 4.2rem;
+  font-size: 4.0rem;
 }
 .about-content p{
-  font-size: 2.6rem;
+  font-size: 2.2rem;
   margin: 2rem 0 3rem;
 }  
 
@@ -226,26 +226,29 @@ span{
 
 .services h2{
   margin-bottom: 6rem;
-  font-size: 8rem;
+  font-size: 7rem;
 }
 
 .services-container {
   display: flex;
   justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
+  align-items: stretch;
+  flex-wrap: nowrap; /* Changed from wrap to nowrap */
   gap: 2rem;
 }
 
-.services-container .services-box { /* Fixed Selector */
-  flex: 1 1 30rem;
+
+.services-container .services-box {
+  flex: 1 1 calc(25% - 2rem); /* Changed from 30rem to 25% minus gap */
   background: var(--second-bg-color);
   padding: 3rem 2rem 4rem;
   border-radius: 2rem;
   text-align: center;
   border: .2rem solid var(--bg-color);
   transition: .5s ease;
-  height: 600px;
+  height: auto; /* Changed from fixed height to auto */
+  min-height: 600px; /* Added min-height instead of fixed height */
+  max-width: 300px; /* Added max-width to prevent boxes from getting too wide */
 }
 
 .services-container .services-box:hover {
@@ -254,18 +257,18 @@ span{
 }
 
 .services-box i {
-  font-size: 7.5rem;
+  font-size: 7.0rem;
   color: var(--main-color);
 
 }
 
 .services-box h3 {
-  font-size: 3.6rem;
+  font-size: 3.0rem;
 
 } 
 
 .services-box p {
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   margin: 1rem 0 3rem;
 } 
 
@@ -321,10 +324,10 @@ span{
 
 
 .portfolio-layer h4{
-  font-size: 3rem;
+  font-size: 2rem;
 }
 .portfolio-layer p{
-  font-size: 1.6rem;
+  font-size: 1.3rem;
   margin: 3rem 0 1rem;
 }
 .portfolio-layer a {
@@ -338,12 +341,12 @@ span{
 }
 
 .portfolio-layer a i {
-  font-size: 2rem;
+  font-size: 1rem;
   color: var(--second-bg-color);
 }
 .contact h2{
   margin-bottom: 3rem;
-  font-size: 6rem;
+  font-size: 4rem;
 }
 
 .contact form{
@@ -364,7 +367,7 @@ span{
 .contact form textarea{
   width: 100%;
   padding: 1.5rem;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   color: var(--text-color);
   background: var(--second-bg-color);
   border-radius: .8rem;
@@ -392,7 +395,7 @@ span{
 } 
 
 .footer-text p{
-  font-size: 1.6rem;
+  font-size: 1.4rem;
 }
 .footer-iconTop a{
   display: inline-flex;
@@ -408,7 +411,7 @@ span{
 }
 
 .footer-iconTop a i{
-  font-size: 2.4rem;
+  font-size: 2.2rem;
   color: var(--second-bg-color);
 }  
 
@@ -482,10 +485,10 @@ span{
     flex-direction: column;
   } 
   .home-content h3{
-    font-size: 2.6rem;
+    font-size: 2.4rem;
   }
   .home-content h1{
-    font-size: 5rem;
+    font-size: 4rem;
   }
   .home-content p{
     font-size: 2rem;
@@ -499,11 +502,11 @@ span{
     margin-top: 4rem;
   }
   .about-content h2{
-    font-size: 4rem;
+    font-size: 4.5rem;
     text-align: center;
   }
   .about-content h3{
-    font-size: 3rem;
+    font-size: 2.4rem;
   }
   .about-content p{
     font-size: 2rem;
@@ -511,7 +514,7 @@ span{
   
   .services h2{
     margin-bottom: 3rem;
-    font-size: 5rem;
+    font-size: 4rem;
   }
   .services-container .services-box{
     height: auto; /* Make height responsive */
@@ -520,14 +523,14 @@ span{
   
   .portfolio h2{
     margin-bottom: 3rem;
-    font-size: 5rem;
+    font-size: 4rem;
   }
   .portfolio-container {
     grid-template-columns: repeat(2,1fr);
   }
   
   .contact h2{
-    font-size: 5rem;
+    font-size: 4rem;
   }
   .contact form {
     width: 90%;
@@ -561,7 +564,7 @@ span{
   .social-media a{
     width: 5rem;
     height: 5rem;
-    font-size: 2.5rem;
+    font-size: 2.4rem;
     margin: 2rem 1rem 2rem 0;
   }
 }
@@ -573,23 +576,23 @@ span{
   }
   
   .portfolio-layer h4{
-    font-size: 2.5rem;
+    font-size: 2.4rem;
   }
   
   .portfolio-layer p{
-    font-size: 1.4rem;
+    font-size: 1.3rem;
   }
   
   .services-box h3 {
-    font-size: 3rem;
+    font-size: 2rem;
   }
   
   .services-box p {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
   }
   
   .services-box i {
-    font-size: 6rem;
+    font-size: 5rem;
   }
 }
 
@@ -600,7 +603,7 @@ span{
   }
   
   .heading{
-    font-size: 4.5rem;
+    font-size: 4.4rem;
   }
   
   section{
@@ -612,11 +615,11 @@ span{
   }
   
   .home-content h1{
-    font-size: 4rem;
+    font-size: 3rem;
   }
   
   .home-content h3{
-    font-size: 2.2rem;
+    font-size: 2.0rem;
   }
   
   .home-img img {
@@ -659,11 +662,11 @@ span{
   }
   
   .services h2, .portfolio h2, .contact h2{
-    font-size: 4rem;
+    font-size: 3rem;
   }
   
   .home-content h1{
-    font-size: 3.5rem;
+    font-size: 3.4rem;
   }
   
   .home-img .circle-spin {
@@ -673,7 +676,7 @@ span{
   
   .btn {
     padding: 0.8rem 1.2rem;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
   
   .services-container .services-box{
