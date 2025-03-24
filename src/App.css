@@ -35,24 +35,26 @@ section{
   width: 100%;
   padding: 1.5rem 9%;
   background: var(--bg-color);
-  display: flex;  /* Enables flexbox */
-  justify-content: space-between; /* Space between logo & nav */
+  display: flex; 
+  justify-content: space-between; 
   align-items: center;
   z-index: 100;
 }
 .header.sticky {
   border-bottom: 1rem solid rgba(0, 0, 0, .2);
 }
-.logo {
+
+.logo, .portfolio-title {
   font-size: 2.5rem;
   font-weight: bold;
   color: var(--text-color);
   text-decoration: none;
+  white-space: nowrap; 
 }
 
 .navbar {
   display: flex;
-  gap: 2rem;  /* Space between links */
+  gap: 2rem;  
 }
 
 .navbar a {
@@ -422,11 +424,11 @@ span{
 }
 /* Fix typo in media query from 'mac-width' to 'max-width' */
 @media (max-width:991px){
-  .header{
-    padding: 2rem 3%;
+  .header {
+    padding: 2rem 5%; 
   } 
   section {
-    padding: 10rem 3% 2rem;
+    padding: 8rem 3% 2rem;
   } 
   .services{
     padding-bottom: 7rem;
@@ -457,6 +459,12 @@ span{
 
 /* Improved navbar responsive styling */
 @media (max-width:768px) { 
+  .header {
+    padding: 1.5rem 4%; 
+  }
+  .logo, .portfolio-title {
+    font-size: 2.2rem; 
+  }
   #menu-icon {
     display: block;
   }  
@@ -469,7 +477,7 @@ span{
     padding: 1rem 3%;
     background: var(--bg-color);
     border-top: .1rem solid rgba(0,0,0,.2);
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, .2); /* Fixed missing unit */
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, .2); 
     display: none;   
   } 
   .navbar.active{
@@ -516,10 +524,19 @@ span{
     margin-bottom: 3rem;
     font-size: 4rem;
   }
-  .services-container .services-box{
-    height: auto; /* Make height responsive */
-    min-height: 400px;
-  } 
+
+  .services-container {
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 3rem;
+  }
+
+ .services-container .services-box {
+    flex: 1 1 100%;
+    max-width: 100%;
+    width: 100%;
+    margin-bottom: 2rem;
+  }
   
   .portfolio h2{
     margin-bottom: 3rem;
@@ -567,6 +584,46 @@ span{
     font-size: 2.4rem;
     margin: 2rem 1rem 2rem 0;
   }
+  section {
+    min-height: auto; 
+    padding: 6rem 5% 3rem;
+  }
+  
+
+  .home-content, 
+  .about-content, 
+  .services-container, 
+  .portfolio-container, 
+  .contact form {
+    width: 100%;
+  }
+  
+ 
+  .home, 
+  .about, 
+  .services, 
+  .portfolio, 
+  .contact {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 2rem;
+  }
+  
+  
+  .home-img img, 
+  .about-img img {
+    margin-bottom: 2rem;
+  }
+  
+
+  .services-container .services-box,
+  .portfolio-box,
+  .contact form {
+    min-height: auto;
+    height: auto;
+  }
+
+
 }
 
 /* Better tablet styling for portfolio */
@@ -602,14 +659,26 @@ span{
      font-size: 50%;
   }
   
-  .heading{
-    font-size: 4.4rem;
+  .header {
+    padding: 1rem 3%;
   }
   
-  section{
-    padding: 7rem 5% 2rem;
+  .logo, .portfolio-title {
+    font-size: 2rem;
   }
-  
+  section {
+    padding: 4rem 4% 2rem;
+  }
+  .services-container .services-box {
+    min-height: auto;
+    padding-bottom: 2rem;
+  }
+  .services-container,
+  .portfolio-container {
+    gap: 2rem;
+  }
+
+
   .contact form .input-box input {
     width: 100%;
   }
@@ -636,10 +705,26 @@ span{
     line-height: 1.6;
   }
   
-  .services-container .services-box{
+  .services-container .services-box {
+    min-height: auto;
     padding: 2.5rem 1.5rem 3rem;
-    min-height: 350px;
   }
+
+html, body {
+  min-height: 100%;
+  height: auto;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.footer {
+  margin-top: auto;
+  padding: 2rem 5%;
+}
 }
 
 /* Extremely small devices */
