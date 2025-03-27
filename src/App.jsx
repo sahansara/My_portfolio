@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import "./App.css";
-import profileImg from "./assets/profile1.png"; // Import Image
+import profileImg from "./assets/profile1.png"; 
 import profileImg2 from "./assets/profile2.png";
 import profileImg3 from "./assets/logo.png";
-import ScrollReveal from "scrollreveal";  // Import ScrollReveal
-import Typed from "typed.js"; // ✅ Import Typed.js
+import ScrollReveal from "scrollreveal";  
+import Typed from "typed.js"; 
 
 
 function App() {
@@ -41,6 +41,7 @@ function App() {
       navbar.classList.toggle("active");
     };
   
+
     const removemenu = () => {
       header.classList.toggle("sticky", window.scrollY > 100);
       menuIcon.classList.remove("bx-x");
@@ -87,6 +88,7 @@ function App() {
   
   return (
     <>
+      
       <header className="header">
         <i className="bx bx-menu" id="menu-icon"></i>
         <a href="#home" className="logo">
