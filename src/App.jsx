@@ -174,7 +174,7 @@ function App() {
             <i className="bx bx-code-alt"></i>
             <h3>Web Development</h3>
             <p> Web app development involves creating interactive, dynamic applications that run on web browsers. Using technologies like HTML, CSS, JavaScript, and frameworks such as React, Angular, and Vue.js, developers create responsive and user-friendly web applications. On the backend, Node.js, Laravel, Ruby on Rails, and Django are popular choices, ensuring high performance and security. Database management systems like MySQL, MongoDB, and PostgreSQL are commonly used to manage data efficiently.</p>
-            <a href="/" className="btn">
+            <a href="https://github.com/sahansara/Agricultural-Information-Platform-with-Crop-Calendar.git" className="btn">
               Read More
             </a>
           </div>
@@ -183,7 +183,7 @@ function App() {
             <i className="bx bx-code-alt"></i>
             <h3>Software Development</h3>
             <p> Software development includes the creation of applications or systems that run on desktop computers or servers. It involves a range of programming languages such as Java, C#, C++, Python, and Swift for building robust, scalable solutions. Integrated Development Environments (IDEs) like Visual Studio and Eclipse streamline the development process. Developers also rely on tools like Git for version control and Docker for containerization to improve software deployment and maintainability.</p>
-            <a href="/" className="btn">
+            <a href="https://github.com/sahansara/" className="btn">
               Read More
             </a>
           </div>
@@ -192,7 +192,7 @@ function App() {
             <i className="bx bx-mobile-alt"></i>
             <h3>Mobile App Development</h3>
             <p> Mobile app development focuses on creating applications for smartphones and tablets. For native mobile apps, developers use Swift (for iOS) and Kotlin or Java (for Android) to ensure optimal performance and user experience. Cross-platform development frameworks such as Flutter and React Native enable building apps for both iOS and Android from a single codebase. Xcode and Android Studio are the primary IDEs for mobile development, while cloud-based backends like Firebase and AWS are often integrated for storage and real-time capabilities.</p>
-            <a href="/" className="btn">
+            <a href="https://github.com/sahansara/" className="btn">
               Read More
             </a>
           </div>
