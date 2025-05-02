@@ -1,13 +1,109 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
-import profileImg from "./assets/profile1.png"; 
+
 import profileImg2 from "./assets/profile2.png";
 import profileImg3 from "./assets/logo.png";
+import asswenna_mokup from "./assets/asswenna_mokup.png";
+import portfolio_mokup from "./assets/portfolio.png";
+
 import ScrollReveal from "scrollreveal";  
 import Typed from "typed.js"; 
 
 
 function App() {
+  const [selectedProject, setSelectedProject] = useState(null);
+  
+  // Project data
+  const projects = [
+    {
+      id: 1,
+      title: "Personal Portfolio Website",
+      category: "Web Development",
+      image: profileImg2, 
+      mockupImage:portfolio_mokup , 
+      description: "This is a responsive and modern portfolio website built using React and CSS. It showcases my biography, skills, services, contact information, and featured projects in an elegant UI. The goal is to highlight my full-stack development expertise and design sense.",
+      technologies: ["React", "CSS", "JavaScript", "HTML"],
+      links: {
+        github: "https://github.com/sahansara/My_portfolio.git", 
+        live: "http://localhost:5173/My_portfolio/#portfolio"   
+      }
+    }
+    ,
+    { 
+
+
+      
+      id: 2,
+      title: "Agricultural Information Platform",
+      category: "Web Development",
+      image: profileImg3,
+      mockupImage: asswenna_mokup, 
+      description: "The platform is a digital agricultural solution built with Laravel, React, and MySQL that offers farmers personalized crop calendars and management tools. It features an AI chatbot for instant support and an intelligent disease detection system that identifies plant diseases from images.",
+      technologies: ["Laravel", "React", "MySQL", "AI", "Chatbot", "Image Processing"],
+      links: {
+        github: "https://github.com/sahansara/Agricultural-Information-Platform-with-Crop-Calendar.git",
+        live: "https://www.linkedin.com/posts/widane-vihaga12_reactjs-laravel-agritech-activity-7321262961413558272-L9ve?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFT6xbcBmtSz4nLgg_k6dz62lsCYgJflNWg"
+      }
+    },
+
+    
+   
+    
+  ];
+
+  // Project Modal Component
+  const ProjectModal = ({ project, onClose }) => {
+    if (!project) return null;
+    
+    return (
+    
+      <div className="modal-overlay">
+        
+        <div className="project-modal">
+        <div className="mockup-page">
+          <div className="modal-header">
+          
+            <h3>{project.title}</h3>
+            <button onClick={onClose} className="close-modal">&times;</button>
+          </div>
+          
+          <div className="modal-body">
+            <div className="project-mockup">
+              <img src={project.mockupImage} alt={`${project.title} mockup`} />
+            </div>
+            
+            <div className="project-info">
+              <div className="project-description">
+                <h4>Project Description</h4>
+                <p>{project.description}</p>
+              </div>
+              
+              <div className="project-tech">
+                <h4>Technologies Used</h4>
+                <div className="tech-tags">
+                  {project.technologies.map((tech, index) => (
+                    <span key={index} className="tech-tag">{tech}</span>
+                  ))}
+                </div>
+              </div>
+              
+              <div className="project-links">
+                <a href={project.links.github} target="_blank" rel="noopener noreferrer" className="btn project-btn">
+                  <i className="bx bxl-github"></i> View Code
+                </a>
+                <a href={project.links.live} target="_blank" rel="noopener noreferrer" className="btn secondary-btn">
+                  <i className="bx bx-link-external"></i> Live Demo
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+
+    );
+  };
+
   useEffect(() => {
     const menuIcon = document.querySelector("#menu-icon");
     const navbar = document.querySelector(".navbar");
@@ -18,7 +114,7 @@ function App() {
       distance: "80px",
       duration: 2000,
       delay: 200,
-      reset: true, // Enables animation to reappear on scroll
+      reset: true, 
     });
 
     sr.reveal(".home-content, .heading",  { origin: "top" } );
@@ -76,15 +172,23 @@ function App() {
       menuIcon.addEventListener("click", handleMenuClick);
     }
     
-    window.addEventListener("scroll", handleScroll); // Add removemenu to scroll event
+    window.addEventListener("scroll", handleScroll); 
+  
+    // Body lockScroll for modal
+    if (selectedProject) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
   
     return () => {
       window.removeEventListener("scroll", handleScroll);
       if (menuIcon) {
         menuIcon.removeEventListener("click", handleMenuClick);
       }
+      document.body.style.overflow = "";
     };
-  }, []);
+  }, [selectedProject]);
   
   return (
     <>
@@ -125,11 +229,11 @@ function App() {
             </a>
 
             <a href="https://medium.com/@widanevihaga">
-              <i class='bx bxl-medium'></i>
+              <i className='bx bxl-medium'></i>
             </a>
  
             <a href="/">
-            <i class='bx bxl-discord-alt'></i>
+            <i className='bx bxl-discord-alt'></i>
             </a>
             
            
@@ -174,7 +278,7 @@ function App() {
             <i className="bx bx-code-alt"></i>
             <h3>Web Development</h3>
             <p> Web app development involves creating interactive, dynamic applications that run on web browsers. Using technologies like HTML, CSS, JavaScript, and frameworks such as React, Angular, and Vue.js, developers create responsive and user-friendly web applications. On the backend, Node.js, Laravel, Ruby on Rails, and Django are popular choices, ensuring high performance and security. Database management systems like MySQL, MongoDB, and PostgreSQL are commonly used to manage data efficiently.</p>
-            <a href="https://github.com/sahansara/Agricultural-Information-Platform-with-Crop-Calendar.git" className="btn">
+            <a href="https://www.linkedin.com/in/widane-vihaga12/" className="btn">
               Read More
             </a>
           </div>
@@ -183,7 +287,7 @@ function App() {
             <i className="bx bx-code-alt"></i>
             <h3>Software Development</h3>
             <p> Software development includes the creation of applications or systems that run on desktop computers or servers. It involves a range of programming languages such as Java, C#, C++, Python, and Swift for building robust, scalable solutions. Integrated Development Environments (IDEs) like Visual Studio and Eclipse streamline the development process. Developers also rely on tools like Git for version control and Docker for containerization to improve software deployment and maintainability.</p>
-            <a href="https://github.com/sahansara/" className="btn">
+            <a href="https://www.linkedin.com/in/widane-vihaga12/" className="btn">
               Read More
             </a>
           </div>
@@ -192,13 +296,13 @@ function App() {
             <i className="bx bx-mobile-alt"></i>
             <h3>Mobile App Development</h3>
             <p> Mobile app development focuses on creating applications for smartphones and tablets. For native mobile apps, developers use Swift (for iOS) and Kotlin or Java (for Android) to ensure optimal performance and user experience. Cross-platform development frameworks such as Flutter and React Native enable building apps for both iOS and Android from a single codebase. Xcode and Android Studio are the primary IDEs for mobile development, while cloud-based backends like Firebase and AWS are often integrated for storage and real-time capabilities.</p>
-            <a href="https://github.com/sahansara/" className="btn">
+            <a href="https://www.linkedin.com/in/widane-vihaga12/" className="btn">
               Read More
             </a>
           </div>
 
           <div className="services-box">
-            <i class='bx bxl-medium'></i>
+            <i className='bx bxl-medium'></i>
             <h3>Blogging </h3>
             <p> I write informative, engaging blogs to share my knowledge and experiences with others. As a passionate hobbyist writer, I create content on topics I'm knowledgeable about, helping readers learn new skills and perspectives. My blogs combine personal insights with practical information, making complex topics accessible to everyone. Through my writing, I aim to build a community of like-minded individuals interested in learning and growing together.</p>
             <a href="https://medium.com/@widanevihaga" className="btn">
@@ -209,25 +313,41 @@ function App() {
 
         </div>
       </section>
-
+      
+      
       <section className="portfolio" id="portfolio">
         <h2 className="heading">
-          Latest <span>Project</span>
+          All <span>Projects</span>
         </h2>
 
         <div className="portfolio-container">
-          <div className="portfolio-box">
-            <img src={profileImg3} alt="aswenna_logo" />
-            <div className="portfolio-layer">
-              <h4>Web Design</h4>
-              <p> The platform is a digital agricultural solution built with Laravel, React, and MySQL that offers farmers personalized crop calendars and management tools. It features an AI chatbot for instant support and an intelligent disease detection system that identifies plant diseases from images. The platform delivers region-specific farming guidance while connecting farmers to expert advice and community knowledge—all through an intuitive interface designed to improve agricultural productivity and sustainability.</p>
-              <a href="https://github.com/sahansara/Agricultural-Information-Platform-with-Crop-Calendar.git">
-                <i className="bx bx-link-external"></i>{" "}
-              </a>
+          {projects.map(project => (
+            <div className="portfolio-box" key={project.id} onClick={() => setSelectedProject(project)}>
+              <img src={project.image} alt={project.title} />
+              <div className="portfolio-layer">
+                <h4>{project.category}</h4>
+                <p>{project.title}</p>
+                <a href="#" onClick={(e) => {
+                  e.preventDefault();
+                  setSelectedProject(project);
+                }}>
+                  <i className="bx bx-link-external"></i>
+                </a>
+              </div>
             </div>
-          </div>
+          ))}
         </div>
+        
+
+        {selectedProject && (
+          <ProjectModal 
+            project={selectedProject} 
+            onClose={() => setSelectedProject(null)} 
+          />
+        )}
       </section>
+
+      
 
       <section className="contact" id="contact">
         <h2 className="heading">
