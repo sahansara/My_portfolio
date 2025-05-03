@@ -12,7 +12,7 @@ import Typed from "typed.js";
 
 function App() {
   const [selectedProject, setSelectedProject] = useState(null);
-  
+  const [selectedBlog, setSelectedBlog] = useState(null);
   // Project data
   const projects = [
     {
@@ -46,9 +46,29 @@ function App() {
       }
     },
 
-    
-   
-    
+    ];
+
+      // Blog data
+  const blogPosts = [
+    {
+      id: 1,
+      title: "Solving Common Laravel Email Issues:( SSL error suggested certificate verification issues)",
+      date: "Mar 21, 2025",
+      category: "Framework",
+      excerpt: "A guide to troubleshooting common email issues in Laravel, including SSL errors and certificate verification problems.",
+      content: "Debugging Laravel email errors and configuring SMTP settings in Laravel 11 for password reset and email verification When developing web applications, we often encounter unexpected challenges. As I worked on an agriculture-focused Laravel 11 and React-based project, I faced some frustrating email issues while setting up password reset and email verification functionalities. These problems stemmed from SMTP email configurations and SSL verification, preventing emails from being sent successfully.",
+                
+      postLink: "https://medium.com/@widanevihaga/solving-common-laravel-email-issues-ssl-error-suggested-certificate-verification-issues-35057c82c30f",
+    },
+    {
+      id: 2,
+      title: "Why and How My MERN Stack Project “Talent Bridge” Uses JWT Authentication",
+      date: "May 04, 2025",
+      category: "Web Development",
+      excerpt: "An exploration of the benefits and implementation of JWT authentication in a MERN stack project.",
+      content: "In this article, we will explore the reasons behind using JWT authentication in our MERN stack project, Talent Bridge includes features like role-based dashboards, job search and filtering, secure login and registration, application tracking, and more. It’s designed with scalability, user experience, and data security in mind.🔐 A key component of the platform is its robust JWT (JSON Web Token) authentication system, which ensures that user sessions are secure and efficiently managed. In this blog post, I’ll walk you through how JWT is implemented in Talent Bridge with real code examples, tools used, and best practices followed.",
+      postLink: "https://medium.com/@widanevihaga/%EF%B8%8F-why-and-how-my-mern-stack-project-talent-bridge-uses-jwt-authentication-73ed581a9a63", 
+    }
   ];
 
   // Project Modal Component
@@ -104,6 +124,56 @@ function App() {
     );
   };
 
+    // Blog Modal Component
+    const BlogModal = ({ blogPost, onClose }) => {
+      if (!blogPost) return null;
+      
+      return (
+        <div className="modal-overlay">
+          <div className="blog-modal">
+            <div className="mockup-page">
+              <div className="modal-header">
+                <h3>{blogPost.title}</h3>
+                <button onClick={onClose} className="close-modal">&times;</button>
+              </div>
+              
+              <div className="modal-body">
+                <div className="blog-meta">
+                  <span className="blog-date"><i className='bx bx-calendar'></i> {blogPost.date}</span>
+                  <span className="blog-category"><i className='bx bx-category'></i> {blogPost.category}</span>
+                </div>
+                
+                <div className="blog-content">
+                  {blogPost.content.split('\n\n').map((paragraph, index) => (
+                    <p key={index}>{paragraph}</p>
+
+                    
+               ))}   <div className="text-center">
+                   <a href={blogPost.postLink} target="_blank" rel="noopener noreferrer" className="btn blog-btn btn-lg">
+                  <i className="bx bxl-medium"></i> Read Full Post
+                </a>
+                    
+                </div>
+                 
+                  
+
+                </div>
+                
+                <div className="blog-share">
+                  <h4>Share This Post</h4>
+                  <div className="blog-social">
+                    <a href="https://medium.com/@widanevihaga" className="social-icon"><i className="bx bxl-medium"></i> </a>
+                    
+                    <a href="https://www.linkedin.com/in/widane-vihaga-a73579339/" className="social-icon"><i className='bx bxl-linkedin'></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    };
+   
   useEffect(() => {
     const menuIcon = document.querySelector("#menu-icon");
     const navbar = document.querySelector(".navbar");
@@ -119,7 +189,7 @@ function App() {
 
     sr.reveal(".home-content, .heading",  { origin: "top" } );
 
-    sr.reveal(".home-img , .services-container, .portfolio-box, .contact form", { origin: "bottom" });
+    sr.reveal(".home-img , .services-container, .portfolio-box, .blog-box, .contact form", { origin: "bottom" });
     sr.reveal(".home-content h1 , .about-img",  { origin: "left" } );
     sr.reveal(".home-content p , .about-content",  { origin: "right" } );
    
@@ -205,6 +275,7 @@ function App() {
           <a href="#about">About</a>
           <a href="#services">Services</a>
           <a href="#portfolio">Portfolio</a>
+          <a href="#blog">Blog</a>
           <a href="#contact">Contact</a>
         </nav>
       </header>
@@ -347,7 +418,40 @@ function App() {
         )}
       </section>
 
-      
+    
+      <section className="blog" id="blog">
+        <h2 className="heading">
+          My <span>Blog</span>
+        </h2>
+        
+        <div className="blog-container">
+          {blogPosts.map(post => (
+            <div className="blog-box" key={post.id} onClick={() => setSelectedBlog(post)}>
+              <div className="blog-content">
+                <span className="blog-date">{post.date}</span>
+                <h3>{post.title}</h3>
+                <span className="blog-category">{post.category}</span>
+                <p>{post.excerpt}</p>
+                <a href="#" onClick={(e) => {
+                  e.preventDefault();
+                  setSelectedBlog(post);
+                }} className="read-more">
+                  Read More <i className='bx bx-right-arrow-alt'></i>
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+        
+        {selectedBlog && (
+          <BlogModal 
+            blogPost={selectedBlog} 
+            onClose={() => setSelectedBlog(null)} 
+          />
+        )}
+      </section>
+
+     
 
       <section className="contact" id="contact">
         <h2 className="heading">
