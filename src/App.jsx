@@ -3,6 +3,8 @@ import "./App.css";
 
 import profileImg2 from "./assets/profile2.png";
 import profileImg3 from "./assets/logo.png";
+import uocDailyThumbnail from "./assets/icon 01.png";
+import uocDailyMockup from "./assets/uoc_daily_mockup.png";
 import asswenna_mokup from "./assets/asswenna_mokup.png";
 import portfolio_mokup from "./assets/portfolio.png";
 
@@ -46,6 +48,32 @@ function App() {
       }
     },
 
+    {
+          id: 3,
+          title: "UOC Daily",
+          category: "Mobile App Development",
+          image: uocDailyThumbnail, 
+          mockupImage: uocDailyMockup, 
+          description:
+            "UOC Daily is a mobile news application developed using Java and Firebase. It enables university students and staff to access real-time news updates categorized as Academic, Events, and Sports. The admin panel allows content and user management, including news creation, image uploads, and role-based access. The UI was designed in Adobe XD and translated into a clean and responsive Android app.",
+          technologies: [
+            "Java",
+            "Firebase",
+            "Android Studio",
+            "XML",
+            "Firebase Auth",
+            "Realtime Database",
+            "Firebase Storage",
+            "Adobe XD"
+          ],
+          links: {
+            github: "https://github.com/sahansara/UOC-News-App.git",
+            live: "https://www.linkedin.com/posts/widane-vihaga12_androiddevelopment-java-firebase-activity-7340617293363625987-pzDp?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFT6xbcBmtSz4nLgg_k6dz62lsCYgJflNWg", 
+           
+          }
+    }
+
+
     ];
 
       // Blog data
@@ -76,53 +104,60 @@ function App() {
     if (!project) return null;
     
     return (
-    
       <div className="modal-overlay">
-        
         <div className="project-modal">
-        <div className="mockup-page">
-          <div className="modal-header">
-          
-            <h3>{project.title}</h3>
-            <button onClick={onClose} className="close-modal">&times;</button>
-          </div>
-          
-          <div className="modal-body">
-            <div className="project-mockup">
-              <img src={project.mockupImage} alt={`${project.title} mockup`} />
+          <div className="mockup-page">
+            <div className="modal-header">
+              <h3>{project.title}</h3>
+              <button onClick={onClose} className="close-modal">&times;</button>
             </div>
             
-            <div className="project-info">
-              <div className="project-description">
-                <h4>Project Description</h4>
-                <p>{project.description}</p>
+            <div className="modal-body">
+              <div className="project-mockup" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                <img 
+                  src={project.mockupImage} 
+                  alt={`${project.title} mockup`}
+                  style={{
+                    width: '100%',
+                    maxWidth: '500px',
+                    height: '300px',
+                    objectFit: 'cover',
+                    borderRadius: '8px',
+                    display: 'block'
+                  }}
+                />
               </div>
               
-              <div className="project-tech">
-                <h4>Technologies Used</h4>
-                <div className="tech-tags">
-                  {project.technologies.map((tech, index) => (
-                    <span key={index} className="tech-tag">{tech}</span>
-                  ))}
+              <div className="project-info">
+                <div className="project-description">
+                  <h4>Project Description</h4>
+                  <p>{project.description}</p>
                 </div>
-              </div>
-              
-              <div className="project-links">
-                <a href={project.links.github} target="_blank" rel="noopener noreferrer" className="btn project-btn">
-                  <i className="bx bxl-github"></i> View Code
-                </a>
-                <a href={project.links.live} target="_blank" rel="noopener noreferrer" className="btn secondary-btn">
-                  <i className="bx bx-link-external"></i> Live Demo
-                </a>
+                
+                <div className="project-tech">
+                  <h4>Technologies Used</h4>
+                  <div className="tech-tags">
+                    {project.technologies.map((tech, index) => (
+                      <span key={index} className="tech-tag">{tech}</span>
+                    ))}
+                  </div>
+                </div>
+                
+                <div className="project-links">
+                  <a href={project.links.github} target="_blank" rel="noopener noreferrer" className="btn project-btn">
+                    <i className="bx bxl-github"></i> View Code
+                  </a>
+                  <a href={project.links.live} target="_blank" rel="noopener noreferrer" className="btn secondary-btn">
+                    <i className="bx bx-link-external"></i> Live Demo
+                  </a>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      </div>
-
     );
-  };
+};
 
     // Blog Modal Component
     const BlogModal = ({ blogPost, onClose }) => {
@@ -394,7 +429,16 @@ function App() {
         <div className="portfolio-container">
           {projects.map(project => (
             <div className="portfolio-box" key={project.id} onClick={() => setSelectedProject(project)}>
-              <img src={project.image} alt={project.title} />
+              <img 
+        src={project.image} 
+        alt={project.title}
+        style={{
+          width: '100%',
+          height: '380px',
+          objectFit: 'cover',
+          display: 'block'
+        }}
+      />
               <div className="portfolio-layer">
                 <h4>{project.category}</h4>
                 <p>{project.title}</p>
