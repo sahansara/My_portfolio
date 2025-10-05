@@ -12,7 +12,6 @@ I am an ambitious and passionate full-stack software developer with a strong fou
 - **CSS3** – For custom styling and layout design.
 - **JavaScript (ES6+)** – For implementing interactivity and functionality.
 - **HTML5** – For semantic page structure.
-- *(Optional additions if you use them: React Router, Tailwind CSS, Font Awesome, etc.)*
 
 ## 🎯 Features
 
